@@ -1,19 +1,31 @@
-var rule={     
-    title:'往往影院',
-    //https://www.wwys.pro/oftensshow/dianshiju--------2---.html
-    host:'https://www.wwys.pro',
-    url:'/oftensshow/fyclass--------fypage---.html',
-    searchUrl:'/oftenssearch/**----------fypage---.html',
-    searchable:2,//是否启用全局搜索,
-    quickSearch:0,//是否启用快速搜索,
-    filterable:0,//是否启用分类筛选,
-    //class_parse:'.nav-menu-items&&li;a&&Text;a&&href;.*/(.*?).html',
-    //cate_exclude:'演员',
-    class_name:'电影&电视剧&综艺&动漫&纪录片&国产剧&日韩剧&港台剧&欧美剧&泰国剧&其他剧',
-    class_url:'dianying&dianshiju&zongyi&dongman&jilupian&guochanju&rihanju&gangtaiju&oumeiju&taiguoju&qitaju',  
-    推荐:'body&&.hl-list-wrap;ul&&li;a&&title;.hl-lazy&&data-original;.hl-pic-text&&Text;a&&href',
-    double:true, // 推荐内容是否双层定位
-    一级:'.hl-vod-list&&li;a&&title;.hl-lazy&&data-original;.hl-pic-text&&Text;a&&href',
-    二级:{"title":".hl-dc-title&&Text;.hl-col-xs-12&&em&&.hl-text-muted:eq(-2)&&Text","img":".hl-lazy&&data-original","desc":";;.hl-col-xs-12:eq(5)&&Text;.hl-col-xs-12:eq(3)&&Text;.hl-col-xs-12:eq(4)&&Text","content":".hl-content-text&&Text","tabs":".hl-plays-from a","lists":".hl-plays-list:eq(#id) li"},
-    搜索:'.hl-list-wrap&&ul&&li;.hl-item-thumb&&title;.hl-lazy&&data-original;.hl-pic-text&&Text;a&&href',
+muban.短视2.二级.title = '.slide-info-title&&Text;.hl-ma0&&Text';
+muban.短视2.二级.img = '.detail-pic&&img&&data-src';
+muban.短视2.二级.desc = '.fraction&&Text;;;.slide-info:eq(3)--strong&&Text;.slide-info:eq(2)--strong&&Text';
+var rule={
+    title:'NY影院',
+    模板:'短视2',
+    host:'https://haoxi.vip',
+    homeUrl:'/index.php/label/rb.html',
+    url: '/index.php/api/vod#type=fyfilter&page=fypage',
+    filterable:1,//是否启用分类筛选,
+    filter_url:'{{fl.cateId}}',
+    filter:{
+        "1":[{"key":"cateId","name":"类型","value":[{"n":"全部","v":"1"},{"n":"动作片","v":"9"},{"n":"喜剧片","v":"10"},{"n":"奇幻片","v":"11"},{"n":"科幻片","v":"12"},{"n":"恐怖片","v":"22"},{"n":"惊悚片","v":"27"},{"n":"悬疑片","v":"23"},{"n":"爱情片","v":"21"},{"n":"战争片","v":"20"},{"n":"剧情片","v":"6"},{"n":"网络电影","v":"24"},{"n":"犯罪片","v":"26"},{"n":"伦理片","v":"8"},{"n":"灾难片","v":"7"},{"n":"动画电影","v":"25"},{"n":"冒险片","v":"28"},{"n":"同性片","v":"44"},{"n":"纪录片","v":"29"},{"n":"歌舞片","v":"45"},{"n":"经典片","v":"46"}]}],
+        "2":[{"key":"cateId","name":"类型","value":[{"n":"全部","v":"2"},{"n":"国产剧","v":"30"},{"n":"欧美剧","v":"47"},{"n":"日韩剧","v":"18"},{"n":"港台剧","v":"16"},{"n":"新马泰剧","v":"14"},{"n":"其他剧","v":"13"}]}],
+        "3":[{"key":"cateId","name":"类型","value":[{"n":"全部","v":"3"},{"n":"国产综艺","v":"31"},{"n":"日韩综艺","v":"32"},{"n":"欧美综艺","v":"34"},{"n":"港台综艺","v":"35"},{"n":"其他综艺","v":"37"}]}],
+        "4":[{"key":"cateId","name":"类型","value":[{"n":"全部","v":"4"},{"n":"日韩动漫","v":"38"},{"n":"国产动漫","v":"39"},{"n":"欧美动漫","v":"40"},{"n":"港台动漫","v":"42"},{"n":"其他动漫","v":"43"}]}]
+    },
+    filter_def:{
+        1:{cateId:'1'},
+        2:{cateId:'2'},
+        3:{cateId:'3'},
+        4:{cateId:'4'},
+        5:{cateId:'5'}
+    },
+    class_name:'电影&电视剧&综艺&动漫&竞技体育',
+    class_url:'1&2&3&4&5',
+    detailUrl:'/voddetail/fyid.html',
+    推荐:'.list-vod .public-list-box;a&&title;.lazy&&data-src;.public-list-prb&&Text;a&&href',
+    double: false, // 推荐内容是否双层定位
 }
+
